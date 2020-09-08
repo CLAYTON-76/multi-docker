@@ -6,7 +6,7 @@ before_install:
     - docker build -t clayton76/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-    - docker run clayton76/react-test npm test -- --coverage
+    - docker run -e CI=true clayton76/react-test npm test 
 
 after_success:
     - docker build -t clayton76/multi-client ./client
